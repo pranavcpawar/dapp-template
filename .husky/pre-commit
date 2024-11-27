@@ -1,0 +1,20 @@
+echo -e ' \n✨ Checking code quality before committing. This might take a few seconds...\n ' 
+
+pnpm lint:staged || (
+  echo '❌ Errors in your code, Commit failed 😢'
+  false;
+)
+
+# If everything passes... Now we can commit
+echo -e ' \n🤔... Alright... Code looks good to me. \n'
+
+echo -e ' \n🏗️... Trying to create production build. \n'
+
+pnpm run build || (
+  echo '❌ Build failed 😢. View the errors above to see why!'
+  false;
+)
+
+echo -e ' \n🎉 Build successful! You win this time... \n'
+
+echo -e ' \n✅ Ready to Commit. \n'
