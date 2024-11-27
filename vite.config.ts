@@ -4,4 +4,13 @@ import react from '@vitejs/plugin-react-swc';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  build: {
+    minify: 'terser',
+    chunkSizeWarningLimit: 1000,
+    terserOptions: {
+      format: {
+        comments: false,
+      },
+    },
+  },
 });
